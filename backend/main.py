@@ -1,0 +1,19 @@
+from fastapi import FastAPI
+from backend.api.routes.health import router as health_router
+from backend.config import ANTHROPIC_API_KEY, VIRUSTOTAL_API_KEY, GOOGLE_SAFE_BROWSING_API_KEY
+
+app = FastAPI(
+    title="Fraudar API",
+    description="Real-time scam and fraud detection platform",
+    version="1.0.0"
+)
+
+app.include_router(health_router, prefix="/api/v1")
+
+@app.get("/")
+def root():
+    return {
+        "service": "Fraudar",
+        "version": "1.0.0",
+        "status": "running"
+    }
