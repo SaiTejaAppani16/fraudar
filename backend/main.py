@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from backend.api.routes.health import router as health_router
-from backend.config import ANTHROPIC_API_KEY, VIRUSTOTAL_API_KEY, GOOGLE_SAFE_BROWSING_API_KEY
+from backend.api.routes.url import router as url_router
 
 app = FastAPI(
     title="Fraudar API",
@@ -9,6 +9,7 @@ app = FastAPI(
 )
 
 app.include_router(health_router, prefix="/api/v1")
+app.include_router(url_router, prefix="/api/v1")
 
 @app.get("/")
 def root():
