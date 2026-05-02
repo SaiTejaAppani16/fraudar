@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from backend.api.routes.health import router as health_router
 from backend.api.routes.url import router as url_router
+from backend.api.routes.text import router as text_router
 
 app = FastAPI(
     title="Fraudar API",
@@ -10,6 +11,7 @@ app = FastAPI(
 
 app.include_router(health_router, prefix="/api/v1")
 app.include_router(url_router, prefix="/api/v1")
+app.include_router(text_router, prefix="/api/v1")
 
 @app.get("/")
 def root():
