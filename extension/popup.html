@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fraudar</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🛡️ Fraudar</h1>
+      <p class="subtitle">Scam Detection</p>
+    </header>
+
+    <div id="loading" class="state">
+      <div class="spinner"></div>
+      <p>Analyzing this page...</p>
+    </div>
+
+    <div id="result" class="state hidden">
+      <div class="score-row">
+        <div id="score-circle" class="score-circle">
+          <span id="score-value">0</span>
+        </div>
+        <div class="score-info">
+          <div id="verdict" class="verdict"></div>
+          <div id="scam-type" class="meta"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>VirusTotal</h3>
+        <div id="vt-results" class="vt-grid"></div>
+      </div>
+
+      <div class="section">
+        <h3>Google Safe Browsing</h3>
+        <div id="gsb-result"></div>
+      </div>
+
+      <div id="url-display" class="url-display"></div>
+    </div>
+
+    <div id="error" class="state hidden">
+      <p>⚠️ Could not analyze this page.</p>
+      <p class="meta">Make sure Fraudar backend is running.</p>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
