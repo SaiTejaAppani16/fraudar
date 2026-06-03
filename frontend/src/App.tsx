@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
-const API_BASE = 'http://18.191.163.47:8000/api/v1';
+const API_BASE = 'https://fraudar-api.onrender.com/api/v1';
 
 interface AnalysisResult {
   source: string;
