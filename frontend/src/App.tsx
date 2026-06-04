@@ -42,15 +42,6 @@ function App() {
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState<'text' | 'url'>('text');
 
-  const pollJobResult = async (jobId: string): Promise<AnalysisResult> => {
-    while (true) {
-      const response = await axios.get(`${API_BASE}/jobs/${jobId}`);
-      if (response.data.status === 'completed') return response.data.result;
-      if (response.data.status === 'failed') throw new Error('Analysis failed');
-      await new Promise(res => setTimeout(res, 2000));
-    }
-  };
-
   const handleAnalyze = async () => {
     if (!inputText && !inputUrl) {
       setError('Please enter text or a URL to analyze.');
@@ -62,15 +53,13 @@ function App() {
     setResult(null);
 
     try {
-      let jobResponse;
+      let response;
       if (activeTab === 'text') {
-        jobResponse = await axios.post(`${API_BASE}/jobs/analyze/text`, { text: inputText });
+        response = await axios.post(`${API_BASE}/analyze/text`, { text: inputText });
       } else {
-        jobResponse = await axios.post(`${API_BASE}/jobs/analyze/url`, { url: inputUrl });
+        response = await axios.post(`${API_BASE}/analyze/url`, { url: inputUrl });
       }
-
-      const analysisResult = await pollJobResult(jobResponse.data.job_id);
-      setResult(analysisResult);
+      setResult(response.data);
     } catch (err) {
       setError('Analysis failed. Make sure the backend is running.');
     } finally {
