@@ -1,13 +1,18 @@
 # Fraudar — Real-Time Scam & Fraud Detection Platform
 
+**🌐 Live Demo: [fraudar.onrender.com](https://fraudar.onrender.com)**  
+**📡 API Docs: [fraudar-api.onrender.com/docs](https://fraudar-api.onrender.com/docs)**  
+**💻 GitHub: [github.com/SaiTejaAppani16/fraudar](https://github.com/SaiTejaAppani16/fraudar)**
+
+---
+
 Online scams cost Americans $12.5 billion in 2025. The victims are elderly people, international students, immigrants, and first-time internet users. There is no free, accessible, real-time tool that anyone can use to check if something is a scam before they engage.
 
 Fraudar fixes that.
 
 Paste any suspicious URL, email, job posting, or message. Get back a scam probability score, specific red flags explained in plain English, and exactly what to do next — in seconds.
 
-## Live Demo
-**API Docs:** `http://<your-ec2-ip>:8000/docs`
+---
 
 ## How It Works
 
@@ -20,6 +25,8 @@ When you submit something suspicious, Fraudar runs it through four layers:
 
 Results are processed asynchronously via Redis queues and Celery workers, so the API never blocks under load.
 
+---
+
 ## Tech Stack
 
 | Layer | Technology |
@@ -30,8 +37,10 @@ Results are processed asynchronously via Redis queues and Celery workers, so the
 | Queue System | Redis + Celery |
 | Frontend | React, TypeScript |
 | Browser Extension | Chrome Extension (Manifest V3) |
-| Deployment | AWS EC2, Docker, GitHub Actions CI/CD |
+| Deployment | AWS EC2 + Render, Docker, GitHub Actions CI/CD |
 | External APIs | VirusTotal, Google Safe Browsing |
+
+---
 
 ## Running Locally
 
@@ -76,6 +85,8 @@ npm start
 docker-compose up --build
 ```
 
+---
+
 ## API Endpoints
 
 | Method | Endpoint | Description |
@@ -87,6 +98,8 @@ docker-compose up --build
 | POST | /api/v1/jobs/analyze/text | Submit text job to queue |
 | GET | /api/v1/jobs/{job_id} | Poll job result |
 
+---
+
 ## Chrome Extension
 
 The extension checks every website you visit in real time and shows a color-coded badge — green for safe, orange for suspicious, red for dangerous.
@@ -97,6 +110,8 @@ To install:
 3. Click Load Unpacked and select the `extension/` folder
 4. Visit any website and watch Fraudar work
 
+---
+
 ## Data Sources
 
 All free and legal:
@@ -105,10 +120,11 @@ All free and legal:
 - VirusTotal — free tier, 500 requests per day
 - Google Safe Browsing API — free
 
+---
+
 ## About
 
-Built by Sai Teja Appani — MS CS student at the University of Florida.
+Built by Sai Teja Appani — MS CS student at the University of Florida.  
 This project was built to solve a real problem that affects people I know personally — international students, immigrants, and elderly family members who fall for scams every day.
 
 [GitHub](https://github.com/SaiTejaAppani16) | [LinkedIn](https://linkedin.com/in/your-profile)
-# CI/CD test
